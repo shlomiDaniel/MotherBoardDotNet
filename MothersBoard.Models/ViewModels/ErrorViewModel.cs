@@ -1,6 +1,6 @@
 using System;
 
-namespace MothersBoard.Models
+namespace MothersBoard.Models.ViewModels
 {
     public class ErrorViewModel
     {

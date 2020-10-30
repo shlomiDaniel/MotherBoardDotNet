@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MothersBoard.Data
+namespace MothersBoard.DataAccsess.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
