@@ -12,7 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MothersBoard.DataAccsess.Data;
+using MothersBoard.DataAccess.Data;
+using MothersBoard.DataAccess.Repository;
+using MothersBoard.DataAccess.Repository.IRepository;
 
 namespace MothersBoard
 {
@@ -29,13 +31,18 @@ namespace MothersBoard
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
+            
                 options.UseSqlServer(
+                    
                     Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddRazorPages()
+
       .AddRazorRuntimeCompilation();
         }
 
